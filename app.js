@@ -20,9 +20,61 @@ return content
 };
 readFile()
 
+
+
+
+//3)
+const writeFile = () => {
+
+    fs.writeFile("text.txt", " A new file has been created", (err) => {
+
+        if (err) throw err;
+        
+        console.log("The file has been created");
+        
+    });
+};
+writeFile()
+
+
+
+//4)
+const getPost = (id) => {
+    axios
+        .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+    .then((response) => {
+        console.log(response.data);
+    })
+
+    .catch((err) => {
+        throw err;
+    });
+};
+getPost(1);
+getPost(50);
+
+
+
+//5)
+const getPostAsync = async(id) => {
+
+    try {
+        const response = await axios.get(
+            `https://jsonplaceholder.typicode.com/posts/${id}`
+        );
+        console.log(response.data);
+    } catch (err) {
+        console.log("ERROR IS:", err);
+    }
+};
+getPostAsync()
+
+
+
 app.get("/",(req,res)=>{
     res.status(200)
-    res.json(`Server is working.....`)
+    res.json(`server is woooooorking`)
 })
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
