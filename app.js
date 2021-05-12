@@ -80,3 +80,19 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
   });
   
+
+  //1)
+
+const appendToFile = (data) => {
+    fs.appendFile('./data.txt', data, (err) => {
+        if (err) throw err;
+        console.log('The "data to append" was appended to file!');
+    });
+};
+appendToFile("heyyyyyyyyyyy")
+
+app.get("/", (req, res) => {
+    res.status(200)
+
+    res.json(`Hello Ahmad`)
+})
